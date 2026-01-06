@@ -1,9 +1,5 @@
-# Frontend (Node.js)
-frontend/node_modules/
-frontend/dist/
-frontend/dist-ssr/
-frontend/*.local
-frontend/*.tsbuildinfo
+# Frontend (Exclude entirely - separate repo)
+frontend/
 
 # Backend (Python/Django)
 backend/venv/

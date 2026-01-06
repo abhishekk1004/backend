@@ -29,7 +29,27 @@ class CertificateAdmin(admin.ModelAdmin):
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
     list_display = ['name', 'email', 'submitted_at', 'is_read']
-    list_filter = ['is_read']
+    list_filter = ['is_read', 'submitted_at']
+    search_fields = ['name', 'email', 'message']
+    readonly_fields = ('submitted_at',)
+    
+    fieldsets = (
+        ('Contact Information', {
+            'fields': ('name', 'email', 'phone')
+        }),
+        ('Message', {
+            'fields': ('message',)
+        }),
+        ('Status', {
+            'fields': ('is_read', 'submitted_at')
+        }),
+    )
+    
+    def mark_as_read(self, request, queryset):
+        queryset.update(is_read=True)
+    mark_as_read.short_description = "Mark selected messages as read"
+    
+    actions = [mark_as_read]
 
 @admin.register(Quote)
 class QuoteAdmin(admin.ModelAdmin):
