@@ -3,7 +3,8 @@ set -e
 
 # Install system libraries required by Pillow (apt-get runs as root in Railway container)
 echo "[start.sh] Installing Pillow system dependencies..."
-apt-get update >/dev/null 2>&1 && apt-get install -y libtiff6 libjpeg62-turbo libfreetype6 zlib1g libwebp7 >/dev/null 2>&1 || true
+apt-get update
+apt-get install -y libtiff6 libjpeg62-turbo libfreetype6 zlib1g libwebp7 libxcb1 libx11-6
 
 # Use the build venv explicitly to avoid system Python (which lacks Pillow)
 VENV_PY="/app/.venv/bin/python"
@@ -15,8 +16,6 @@ cd backend
 # Always ensure Pillow is present (Railway cache can serve a venv missing wheels)
 "$VENV_PIP" install --no-cache-dir Pillow==11.0.0
 
-# Sanity check: confirm Pillow import
-"$VENV_PY" -c "import PIL; import PIL.Image; print(f'[start.sh] Pillow OK: version={PIL.__version__}')"
 # Ensure staticfiles directory exists and collect static assets
 mkdir -p staticfiles
 "$VENV_PY" manage.py collectstatic --noinput

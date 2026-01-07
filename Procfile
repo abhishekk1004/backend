@@ -1,2 +1,2 @@
 web: bash start.sh
-release: apt-get update >/dev/null 2>&1 && apt-get install -y libtiff6 libjpeg62-turbo libfreetype6 zlib1g libwebp7 >/dev/null 2>&1 || true; cd backend && /app/.venv/bin/python -m pip install --no-cache-dir Pillow==11.0.0 && /app/.venv/bin/python manage.py collectstatic --noinput && /app/.venv/bin/python manage.py migrate --noinput
+release: apt-get update && apt-get install -y libtiff6 libjpeg62-turbo libfreetype6 zlib1g libwebp7 libxcb1 libx11-6 && cd backend && /app/.venv/bin/python -m pip install --no-cache-dir Pillow==11.0.0 && /app/.venv/bin/python manage.py collectstatic --noinput && /app/.venv/bin/python manage.py migrate --noinput
