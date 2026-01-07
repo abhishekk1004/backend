@@ -11,6 +11,17 @@ cd backend
 # Always ensure Pillow is present (Railway cache can serve a venv missing wheels)
 "$VENV_PIP" install --no-cache-dir Pillow==11.0.0
 
+# Sanity check: confirm Pillow import
+"$VENV_PY" - <<'PY'
+try:
+	import PIL
+	import PIL.Image
+	print(f"[start.sh] Pillow OK: version={PIL.__version__}")
+except Exception as exc:
+	print(f"[start.sh] Pillow import failed: {exc}")
+	raise
+PY
+
 # Ensure staticfiles directory exists and collect static assets
 mkdir -p staticfiles
 "$VENV_PY" manage.py collectstatic --noinput
