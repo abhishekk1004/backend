@@ -1,0 +1,6 @@
+# Nixpacks configuration for Railway Railpack
+# Specifies system packages needed for Pillow and image processing
+
+[phases.setup]
+# Install system libraries required by Pillow for image processing
+aptPkgs = ["libtiff6", "libjpeg62-turbo", "libfreetype6", "zlib1g", "libwebp7"]
