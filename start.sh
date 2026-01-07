@@ -2,6 +2,9 @@
 set -e
 cd backend
 
+# Ensure Pillow is present (Railway build cache can occasionally miss it)
+python -m pip show Pillow >/dev/null 2>&1 || python -m pip install --no-cache-dir Pillow==11.0.0
+
 # Ensure staticfiles directory exists and collect static assets
 mkdir -p staticfiles
 python manage.py collectstatic --noinput
