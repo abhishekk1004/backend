@@ -8,8 +8,8 @@ VENV_GUNICORN="/app/.venv/bin/gunicorn"
 
 cd backend
 
-# Ensure Pillow is present (Railway cache hiccups/venv path issues)
-"$VENV_PY" -m pip show Pillow >/dev/null 2>&1 || "$VENV_PIP" install --no-cache-dir Pillow==11.0.0
+# Always ensure Pillow is present (Railway cache can serve a venv missing wheels)
+"$VENV_PIP" install --no-cache-dir Pillow==11.0.0
 
 # Ensure staticfiles directory exists and collect static assets
 mkdir -p staticfiles
