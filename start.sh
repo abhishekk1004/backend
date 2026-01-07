@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
 
+# Install system libraries required by Pillow (apt-get runs as root in Railway container)
+echo "[start.sh] Installing Pillow system dependencies..."
+apt-get update >/dev/null 2>&1 && apt-get install -y libtiff6 libjpeg62-turbo libfreetype6 zlib1g libwebp7 >/dev/null 2>&1 || true
+
 # Use the build venv explicitly to avoid system Python (which lacks Pillow)
 VENV_PY="/app/.venv/bin/python"
 VENV_PIP="/app/.venv/bin/pip"
