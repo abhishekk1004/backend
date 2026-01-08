@@ -79,8 +79,12 @@ if config('DATABASE_URL', default=None):
 else:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME':"railway",
+            'USER':'postgres',
+            'PASSWORD': 'ElHNcmlbbcvrCrRwdydraNvCxJchjLXs',
+            'HOST': 'postgres.railway.internal',
+            'PORT': '5432',
         }
     }
 
