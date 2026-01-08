@@ -66,12 +66,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # Vite dev server (default)
-    "http://localhost:5174",  # Vite dev server (alternate port)
-    "http://localhost:3000",
-]
-
 # Database
 # Use PostgreSQL in production, SQLite in development
 if config('DATABASE_URL', default=None):
