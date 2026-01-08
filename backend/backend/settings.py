@@ -67,7 +67,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'backend.wsgi.application'
 
 # Database
-# Use PostgreSQL in production, SQLite in development
+# Use PostgreSQL on Railway, SQLite for local development
 if config('DATABASE_URL', default=None):
     DATABASES = {
         'default': dj_database_url.config(
@@ -79,12 +79,8 @@ if config('DATABASE_URL', default=None):
 else:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME':"railway",
-            'USER':'postgres',
-            'PASSWORD': 'ElHNcmlbbcvrCrRwdydraNvCxJchjLXs',
-            'HOST': 'postgres.railway.internal',
-            'PORT': '5432',
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
 
