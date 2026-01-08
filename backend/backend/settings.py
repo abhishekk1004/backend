@@ -16,7 +16,7 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-@3$)-o@#how#l1xmhl_=0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1', cast=Csv())
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1,abhishek.up.railway.app,www.abhishek-kushwaha.com.np,abhishek-kushwaha.com.np', cast=Csv())
 # CSRF trusted origins (comma-separated) e.g. https://*.railway.app,https://api.abhishek-kushwaha.com.np
 CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default='', cast=Csv())
 
