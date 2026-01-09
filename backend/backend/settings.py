@@ -19,7 +19,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1,abhishek.up.railway.app,www.abhishek-kushwaha.com.np,abhishek-kushwaha.com.np', cast=Csv())
 
 #CSRF trusted origins (comma-separated) e.g. https://*.railway.app,https://api.abhishek-kushwaha.com.np
-CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default='https://www.abhishek-kushwaha.com.np/', cast=Csv())
+CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default='https://www.abhishek-kushwaha.com.np/,https://abhishek-kushwaha.com.np/,https://abhishek.up.railway.app', cast=Csv())
 
 
 # Application definition
